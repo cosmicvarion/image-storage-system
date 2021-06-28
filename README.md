@@ -34,6 +34,27 @@ Please refer to the following diagram:
 * **GET** `/image_batches?page=<page>&per_page=<per_page>`
 * **GET** `/uploads/<uuid>.jpg`
 
+## Database
+
+The database has a simple batch structure:
+```
+[
+  [
+    [ 
+      {
+        "file_path" : "<relative image URL>"
+        "timestamp" : "<timestamp>",
+        "store_name': "<store name>",
+        "camera_id' : "<camera ID>",
+        "barcode'   : "<barcode>"
+      },
+      ...
+    ],
+  ...
+  ]
+]
+```
+
 ## Testing
 * `docker-compose up`
 * `python3 test.py`
