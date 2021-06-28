@@ -11,6 +11,29 @@ Please refer to the following diagram:
 * `flask/app.py` defines Flask app, database models via MongoEngine, endpoints, basic config, etc.
 * `test.py` uploads 3 images to server
 
+## Endpoints
+
+* **POST** `/upload_image_batch`
+  
+  JSON body:
+    ```
+    [ 
+      {
+        "file"      : "<base 64 encoded image>"
+        "timestamp" : "<timestamp>",
+        "store_name': "<store name>",
+        "camera_id' : "<camera ID>",
+        "barcode'   : "<barcode>"
+
+      },
+      ...
+    ]
+    ```
+    See `tests.py` for example.
+    
+* **GET** `/image_batches?page=<page>&per_page=<per_page>`
+* **GET** `/uploads/<uuid>.jpg`
+
 ## Testing
 * `docker-compose up`
 * `python3 test.py`
