@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+
+  flask:
+    container_name: flask
+    build: flask
+    depends_on:
+      - mongo_db
+      - celery_worker
+    ports:
+      - 5000:5000
+    volumes:
+      - data:/uploads
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: flaskdb
+
+  celery_worker:
+    container_name: celery_worker
+    build: flask
+    command: celery -A app.celery worker
+    depends_on:
+      - redis
+    volumes:
+      - data:/uploads
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+        - 6379:6379
+
+volumes:
+  data:

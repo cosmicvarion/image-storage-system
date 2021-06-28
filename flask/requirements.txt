@@ -1,0 +1,5 @@
+Flask==2.0.1
+flask-mongoengine==1.0.0
+celery==5.1.1
+redis==3.5.3
+Pillow==8.2.0
