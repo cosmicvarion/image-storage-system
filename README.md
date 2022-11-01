@@ -2,7 +2,7 @@
 
 This repo consists of an image storage system implemented as a containerized Flask app with Celery for batch processing and Mongo database. Images are stored in the server's disk space, and the database stores the image's path and image metadata such as timestamp, store name, camera ID, and barcode. Upon upload, async saving of the images and their metadata is performed as a Celery task and endpoint response is immediate. 
 
-Basic endpoints are implemented to:
+Basic endpoints, documented below, are implemented to:
 * Upload a batch of images
 * Retrieve batches of images (image metadata and URLs) in a paginated fashion
 * Download an image given its path.
